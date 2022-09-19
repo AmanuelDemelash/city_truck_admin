@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1052243135965",
+    "project_id": "city-truck",
+    "storage_bucket": "city-truck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052243135965:android:8ccd8385bc64ecbc37fa34",
+        "android_client_info": {
+          "package_name": "com.example.city_truck_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052243135965-t8enp6aiqmi5ed7ccg3o48or7kv1p0d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVswmzf_cLyoC9BiFxy9mFg8DaC4uU76E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052243135965-t8enp6aiqmi5ed7ccg3o48or7kv1p0d5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
