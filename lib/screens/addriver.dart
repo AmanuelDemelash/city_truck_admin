@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:city_truck_admin/model/driver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../controllers/add_driver_controller.dart';
@@ -202,10 +203,8 @@ class AddDriver extends StatelessWidget {
                         const EdgeInsets.only(left: 10, right: 10, bottom: 15),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: RaisedButton(
-                          padding: const EdgeInsets.all(10),
-                          color: Colors.orange,
-                          textColor: Colors.white,
+                      child: ElevatedButton(
+
                           onPressed: () {
                             _formkey.currentState!.save();
                             if (_formkey.currentState!.validate()) {
@@ -234,11 +233,14 @@ class AddDriver extends StatelessWidget {
                               }
                             }
                           },
-                          child: const Text("Save",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2,
-                                  fontSize: 20))),
+                          child:const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child:  Text("Save",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2,
+                                    fontSize: 20)),
+                          )),
                     ),
                   )
                 ],
@@ -253,14 +255,17 @@ class AddDriver extends StatelessWidget {
                   width: Get.width,
                   height: Get.height,
                   child: Center(
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          color: Colors.orange.shade200,
-                          borderRadius: BorderRadius.circular(20)),
-                      padding: const EdgeInsets.all(15),
-                      child: const CircularProgressIndicator(),
+                    child:  SpinKitFadingCircle(
+                      itemBuilder:
+                          (BuildContext context, int index) {
+                        return DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: index.isEven
+                                ? Colors.orange
+                                : Colors.orange.shade300,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),

@@ -1,21 +1,29 @@
 import 'package:city_truck_admin/components/mydrawer.dart';
 import 'package:city_truck_admin/controllers/add_truck_trip_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../components/listtask.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({Key? key}) : super(key: key);
+  Homepage({Key? key}) : super(key: key);
+  GlobalKey<ScaffoldState> _scfoldstate = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        key: _scfoldstate,
         appBar: AppBar(
           elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                _scfoldstate.currentState!.openDrawer();
+              },
+              icon: const FaIcon(FontAwesomeIcons.bars)),
           title: const Text(
             "City Truck",
           ),
@@ -43,7 +51,7 @@ class Homepage extends StatelessWidget {
         body: TabBarView(
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              Listtask(),
+              const Listtask(),
               SizedBox(
                   width: Get.width,
                   height: Get.height,

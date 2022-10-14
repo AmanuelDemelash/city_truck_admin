@@ -22,6 +22,7 @@ class Listtask extends StatelessWidget {
                   bottomRight: Radius.circular(30))),
         ),
         SingleChildScrollView(
+          physics:const BouncingScrollPhysics(),
           child: Column(
             children: [
               GetBuilder<AddTruckTripController>(

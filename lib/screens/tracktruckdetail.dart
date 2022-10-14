@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:city_truck_admin/controllers/tracktruckdetailcontroller.dart';
 import 'package:city_truck_admin/model/task.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
 class TrackTruckDetail extends StatefulWidget {
   TrackTruckDetail({Key? key}) : super(key: key);
@@ -19,6 +21,7 @@ class TrackTruckDetail extends StatefulWidget {
 class _TrackTruckDetailState extends State<TrackTruckDetail> {
   late final Task _task = Get.arguments;
   late GoogleMapController mapcontroller;
+  String currentadress="Current Address";
   bool added = false;
 
   List<LatLng> polylinecordinates = [];
@@ -71,6 +74,19 @@ class _TrackTruckDetailState extends State<TrackTruckDetail> {
     )));
   }
 
+  Future<void> getcurrentlocation(AsyncSnapshot<DocumentSnapshot<Object?>> snapshot)async{
+    String url="https://maps.googleapis.com/maps/api/geocode/json?latlng=${snapshot.data!["current_lat"]},${snapshot.data!["current_long"]}&key=AIzaSyBuJ_8xq4Di2929RJBdk0_yTHLArHycpAU";
+    var response=await http.get(Uri.parse(url));
+    if(response.statusCode==200){
+      //print(response.body);
+      var decodeddata=jsonDecode(response.body);
+      currentadress=decodeddata['results'][1]['formatted_address'];
+      setState(() {
+      });
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +100,7 @@ class _TrackTruckDetailState extends State<TrackTruckDetail> {
               builder: (context, snapshot) {
                 if (added) {
                   move_camera(snapshot);
+                  getcurrentlocation(snapshot);
                 }
                 return snapshot.hasData
                     ? GoogleMap(
@@ -309,10 +326,12 @@ class _TrackTruckDetailState extends State<TrackTruckDetail> {
                                         const SizedBox(
                                           width: 15,
                                         ),
-                                        Text(
-                                          "${_task.current_lat}, ${_task.current_long}",
-                                          style: const TextStyle(
-                                              color: Colors.black54),
+                                        Expanded(
+                                          child: Text(
+                                            currentadress,
+                                            style: const TextStyle(
+                                                color: Colors.black54),
+                                          ),
                                         ),
                                       ],
                                     ),

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: AppBinding(),
       debugShowCheckedModeBanner: false,
-      title: 'City Truck',
+      title: 'City Truck Admin',
       defaultTransition: Transition.fade,
       theme: ThemeData(
           fontFamily: "Myappfont",
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/signin", page: () => SignIn()),
         GetPage(name: "/signup", page: () => SignUp()),
         GetPage(name: "/verify", page: () => const Verify()),
-        GetPage(name: "/homepage", page: () => const Homepage()),
+        GetPage(name: "/homepage", page: () => Homepage()),
         GetPage(name: "/mytrucks", page: () => const Mytrucks()),
         GetPage(name: "/truckinfo", page: () => TruckInfo()),
         GetPage(name: "/addtruck", page: () => AddTruck()),

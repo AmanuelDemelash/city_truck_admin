@@ -145,10 +145,8 @@ class TruckInfo extends StatelessWidget {
                                   const EdgeInsets.only(left: 10, right: 10),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: RaisedButton(
-                                    padding: const EdgeInsets.all(10),
-                                    color: Colors.orange,
-                                    textColor: Colors.white,
+                                child: ElevatedButton(
+
                                     onPressed: () {},
                                     child: const Text("Update Truck Info",
                                         style: TextStyle(
@@ -226,19 +224,19 @@ class TruckInfo extends StatelessWidget {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(10),
-                                            child: RaisedButton(
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                color: Colors.orange,
-                                                textColor: Colors.white,
+                                            child: ElevatedButton(
+
                                                 onPressed: () {},
-                                                child: const Text(
-                                                    "Update Driver Info",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        letterSpacing: 2,
-                                                        fontSize: 20))),
+                                                child:const Padding(
+                                                  padding:  EdgeInsets.all(8.0),
+                                                  child:  Text(
+                                                      "Update Driver Info",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          letterSpacing: 2,
+                                                          fontSize: 20)),
+                                                )),
                                           ),
                                         )
                                       ],

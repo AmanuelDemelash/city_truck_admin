@@ -169,10 +169,8 @@ class DriverInfo extends StatelessWidget {
                                       left: 10, right: 10),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
-                                    child: RaisedButton(
-                                        padding: const EdgeInsets.all(10),
-                                        color: Colors.orange,
-                                        textColor: Colors.white,
+                                    child: ElevatedButton(
+
                                         onPressed: () {
                                           _formkey.currentState!.save();
                                           if (_formkey.currentState!
@@ -246,10 +244,8 @@ class DriverInfo extends StatelessWidget {
                                       left: 10, right: 10),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
-                                    child: RaisedButton(
-                                        padding: const EdgeInsets.all(10),
-                                        color: Colors.orange,
-                                        textColor: Colors.white,
+                                    child: ElevatedButton(
+
                                         onPressed: () {
                                           Get.toNamed("/addhelper",
                                               arguments: mydriver.id);

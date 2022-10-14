@@ -332,10 +332,8 @@ class AddTruckTrip extends StatelessWidget {
                                   left: 10, right: 10, bottom: 10),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: RaisedButton(
-                                    padding: const EdgeInsets.all(10),
-                                    color: Colors.orange,
-                                    textColor: Colors.white,
+                                child: ElevatedButton(
+
                                     onPressed: () {
                                       _formkey.currentState!.save();
                                       if (_formkey.currentState!.validate()) {
@@ -361,11 +359,14 @@ class AddTruckTrip extends StatelessWidget {
                                             .add_TruckTrip(task);
                                       }
                                     },
-                                    child: const Text("Save",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            letterSpacing: 2,
-                                            fontSize: 20))),
+                                    child:const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child:  Text("Add trip",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 2,
+                                              fontSize: 20)),
+                                    )),
                               ),
                             ),
                           ))

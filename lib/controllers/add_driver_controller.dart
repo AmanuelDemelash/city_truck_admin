@@ -97,7 +97,7 @@ class AddDriverController extends GetxController {
     return url;
   }
 
-  Stream<List<Driver>> getdrivers() {
+ Stream<List<Driver>> getdrivers(){
     return FirebaseFirestore.instance
         .collection("drivers")
         .snapshots()
@@ -107,8 +107,8 @@ class AddDriverController extends GetxController {
         driver.add(Driver.fromdocumentsnapshot(element));
       }
       return driver;
-    });
-  }
+ });
+        }
 
   Future<void> delete_driver(String id) async {
     Get.defaultDialog(

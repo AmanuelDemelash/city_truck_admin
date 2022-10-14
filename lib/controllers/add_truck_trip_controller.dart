@@ -138,14 +138,26 @@ class AddTruckTripController extends GetxController {
         "start_location": task.start_location,
         "end_location": task.end_location
       }).then((value) {
-        isadding.value = false;
+      
+        firestore
+            .collection("drivers")
+            .doc(task_driver_id.value)
+            .collection("notification")
+            .add({
+          "title": "New task",
+          "task_desc":
+              "${task.task_type} from ${task.start_location} To ${task.end_location}"
+        }).then((value) {
+           isadding.value = false;
         task_driver_id.value = '';
         task_track_id.value = '';
 
-        Get.snackbar("Task added", "",
-            snackPosition: SnackPosition.BOTTOM,
-            padding: const EdgeInsets.all(5),
-            duration: const Duration(seconds: 4));
+          Get.snackbar("Task added", "",
+              snackPosition: SnackPosition.BOTTOM,
+              padding: const EdgeInsets.all(5),
+              duration: const Duration(seconds: 4));
+        });
+
         Get.offNamed("/homepage");
       }).catchError((error) {
         isadding.value = false;
